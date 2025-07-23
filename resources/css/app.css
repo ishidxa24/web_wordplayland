@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Tambahkan ini ke dalam file resources/css/app.css */
+@layer components {
+    .game-card-simple {
+        @apply flex items-center p-4 rounded-lg shadow-md text-white transform hover:scale-105 transition-transform duration-300;
+    }
+}
+
+@keyframes scroll-background {
+    from {
+        /* Posisi awal gambar di titik 0 */
+        background-position: 0 0;
+    }
+    to {
+        /* Posisi akhir, gambar digeser ke kiri sejauh 2000px */
+        /* Angka ini bisa disesuaikan dengan lebar gambar Anda */
+        background-position: -2000px 0;
+    }
+}
+
+/* ▼▼▼ CSS KUSTOM UNTUK ANIMASI TEKS FADE-IN-UP ▼▼▼ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    /* Menerapkan animasi fadeInUp */
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0; /* Mulai dari transparan */
+}
+
+/* 2. Membuat Kelas CSS Baru Bernama '.animated-clouds' */
+.animated-clouds {
+    /* Warna latar belakang cadangan jika gambar gagal dimuat */
+    background-color: #A0D2EB;
+
+    /* Ganti 'cloud.png' dengan nama file gambar Anda yang ada di public/images/ */
+    background-image: url("/public/images/cloud.png");
+
+    /* Mengulang gambar hanya ke samping (horizontal) */
+    background-repeat: repeat-x;
+    background-position: 0 0;
+
+    /* Ukuran tinggi gambar akan memenuhi layar, lebar otomatis */
+    background-size: auto 100%;
+
+    /* Menerapkan animasi yang sudah kita definisikan di atas */
+    /* Format: nama_animasi durasi kecepatan perulangan */
+    animation: scroll-background 60s linear infinite;
+}
+
+/* Custom styles untuk splash screen */
+@layer base {
+    .splash-screen {
+        background-color: #3b82f6; /* fallback */
+        background-image: linear-gradient(to top right, #60a5fa, #a78bfa);
+    }
+
+    /* Style untuk animasi loading spinner */
+    .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3b82f6; /* Warna disesuaikan dengan tema */
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        animation: spin 1.5s linear infinite;
+    }
+
+    /* Animasi putar untuk loader */
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}
+
+/* Custom utility classes */
+@layer utilities {
+    /* Class untuk font utama/branding */
+    .font-brand {
+        font-family: 'Fredoka One', cursive;
+    }
+
+    /* Class untuk bayangan teks yang lebih kompleks */
+    .text-fancy-shadow {
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Class untuk bayangan teks yang lebih sederhana */
+    .text-simple-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+/* Custom styles untuk splash screen pada start-game */
+.splash-screen {
+        background-color: #3b82f6;
+        background-image: linear-gradient(to top right, #818cf8, #a78bfa);
+}
+.loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+         0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+}
+
+/* ▼▼▼ CSS BARU UNTUK ANIMASI TEKS ▼▼▼ */
+.fade-in-up {
+        display: inline-block;
+        animation: fadeInUp 0.8s both;
+        opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
